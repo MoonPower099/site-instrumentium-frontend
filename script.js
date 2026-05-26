@@ -1,19 +1,38 @@
 // Instrumentos
 const instrumentos = document.querySelectorAll(".instrument-card");
 
+let audioAtual = null;
+
 instrumentos.forEach((instrumento) => {
 
     instrumento.addEventListener("click", () => {
 
-        // Áudio
+        // Áudio do instrumento
         const audio = instrumento.querySelector("audio");
 
         if(audio) {
 
-            audio.currentTime = 0;
+            if(audioAtual === audio && !audio.paused) {
+
+                audio.pause();
+
+                return;
+
+            }
+
+            if(audioAtual && audioAtual !== audio) {
+
+                audioAtual.pause();
+                audioAtual.currentTime = 0;
+
+            }
+
             audio.play();
 
+            audioAtual = audio;
+
         }
+
 
         // Brilho dourado
         instrumento.style.boxShadow = "0 0 25px #D4AF37";
