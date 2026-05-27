@@ -92,7 +92,7 @@ nav a:hover{
 
 .categorias{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     background:#f4f1ed;
     color:black;
 }
